@@ -1,0 +1,10 @@
+# Train
+lr: 0.001
+batch_size: 128
+es_patience: 50
+
+# Dataset
+num_workers: 0
+
+# Others
+seed: 123
