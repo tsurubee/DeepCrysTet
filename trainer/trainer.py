@@ -83,12 +83,12 @@ class Trainer:
             }
             torch.save(
                 save_info,
-                os.path.join(self.save_dirs["model"], "cfnet_latest.pt"),
+                os.path.join(self.save_dirs["model"], "deepcrystest_latest.pt"),
             )
             if save_model:
                 torch.save(
                     save_info,
-                    os.path.join(self.save_dirs["model"], "cfnet_best.pt"),
+                    os.path.join(self.save_dirs["model"], "deepcrystest_best.pt"),
                 )
                 best_metric = valid_loss if self.is_regression else valid_acc
             if self.es is not None:
@@ -97,7 +97,7 @@ class Trainer:
 
     def test(self):
         model = DeepCrysTet(self.feature_dim, self.is_regression).to(self.device)
-        checkpoint = torch.load(os.path.join(self.save_dirs["model"], "cfnet_best.pt"))
+        checkpoint = torch.load(os.path.join(self.save_dirs["model"], "deepcrystest_best.pt"))
         model.load_state_dict(checkpoint["model_state_dict"])
         model.eval()
         test_loss = 0
