@@ -17,7 +17,7 @@ from utils import get_config
 from logger import setup_logging
 from trainer import Trainer, EarlyStopping
 from models import DeepCrysTet
-from data import Meshdataset, collate_batch
+from datasets import Meshdataset, collate_batch
 
 
 def main(args, save_dirs, cfg):
