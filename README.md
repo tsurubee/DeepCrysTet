@@ -11,9 +11,15 @@ The overall framework of DeepCrysTet is shown below.
 - [Dataset](#dataset)
 - [Citation](#citation)
 
-## Dataset
+## Datasets
 
-The evaluation dataset generated from the [2018.10.18 version](https://figshare.com/articles/dataset/Materials_Project_Data/7227749) of the Materials Project dataset  used in the original DeepCrysTet paper can be downloaded here.
+The evaluation dataset used in the original DeepCrysTet paper is generated from the 2018.10.18 version of the Materials Project dataset.
+You can download the dataset below.
+
+| Dataset                                |                                   Download                                   |
+|----------------------------------------|:----------------------------------------------------------------------------:|
+| Materials Project (2018.10.18 version) | [Link](https://figshare.com/articles/dataset/Materials_Project_Data/7227749) |
+| DeepCrysTet's Supervised Data          |                                     Link                                     |
 
 If you want to learn more about the data generation process or create your own 3D mesh dataset, more information can be found in the [data](data/) folder.
 
