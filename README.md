@@ -9,6 +9,7 @@ The overall framework of DeepCrysTet is shown below.
 ## Table of Contents
 
 - [Dataset](#dataset)
+- [Training DeepCrysTet](#training-deepcrystet)
 - [Citation](#citation)
 
 ## Datasets
@@ -22,6 +23,25 @@ You can download the dataset below.
 | DeepCrysTet's Supervised Data          |                                     Link                                     |
 
 If you want to learn more about the data generation process or create your own 3D mesh dataset, more information can be found in the [data](data/) folder.
+
+## Training DeepCrysTet
+
+### Environment
+
+We use [Poetry](https://python-poetry.org/) for managing our packages.
+To get started, clone `DeepCrysTet` repository and run the following command from the root directory of this repository.
+
+```bash
+poetry install --no-root
+```
+
+Run the following command to activate the environment:
+
+```bash
+poetry shell
+```
+
+### Run Training
 
 ## Citation
 
