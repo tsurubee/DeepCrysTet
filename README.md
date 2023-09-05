@@ -17,10 +17,10 @@ The overall framework of DeepCrysTet is shown below.
 The evaluation dataset used in the original DeepCrysTet paper is generated from the 2018.10.18 version of the Materials Project dataset.
 You can download the dataset below.
 
-| Dataset                                |                                   Download                                   |
-|----------------------------------------|:----------------------------------------------------------------------------:|
-| Materials Project (2018.10.18 version) | [Link](https://figshare.com/articles/dataset/Materials_Project_Data/7227749) |
-| DeepCrysTet's Supervised Data          |                                     Link                                     |
+| Dataset                                |                                        Download                                        |
+|----------------------------------------|:--------------------------------------------------------------------------------------:|
+| Materials Project (2018.10.18 version) |      [Link](https://figshare.com/articles/dataset/Materials_Project_Data/7227749)      |
+| DeepCrysTet's Supervised Data          | [Link](https://figshare.com/articles/dataset/3D_Mesh_Dataset_for_DeepCrysTet/22031969) |
 
 If you want to learn more about the data generation process or create your own 3D mesh dataset, more information can be found in the [data](data/) folder.
 
@@ -43,6 +43,7 @@ poetry shell
 
 ### Run Training
 
+The model is trained using [DeepCrysTet's supervised data](https://figshare.com/articles/dataset/3D_Mesh_Dataset_for_DeepCrysTet/22031969) by executing the following commands.
 ## Citation
 
 TBD
