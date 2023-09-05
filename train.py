@@ -32,15 +32,6 @@ def main(args, save_dirs, cfg):
     if args.model_path:
         model.load_state_dict(torch.load(args.model_path)["model_state_dict"])
     batch_size = args.batch_size or cfg["batch_size"]
-    if args.sampling_rate < 1.0:
-        remove_rate = 1 - args.sampling_rate
-        sampling_idx, _ = train_test_split(
-            list(range(len(dataset))),
-            test_size=remove_rate,
-            random_state=cfg["seed"],
-            shuffle=True,
-        )
-        dataset = Subset(dataset, sampling_idx)
     train_idx, valid_idx = train_test_split(
         list(range(len(dataset))), test_size=0.2, random_state=cfg["seed"], shuffle=True
     )
@@ -150,12 +141,6 @@ if __name__ == "__main__":
         choices=["regression", "classification"],
         default="regression",
         help="Select `regression` or `classification` task (default: regression)",
-    )
-    parser.add_argument(
-        "--sampling-rate",
-        default=1.0,
-        type=float,
-        help="Sampling rate of input data (default: 1.0)",
     )
     args = parser.parse_args()
     save_dir = args.save_dir
