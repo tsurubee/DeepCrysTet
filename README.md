@@ -44,6 +44,35 @@ poetry shell
 ### Run Training
 
 The model is trained using [DeepCrysTet's supervised data](https://figshare.com/articles/dataset/3D_Mesh_Dataset_for_DeepCrysTet/22031969) by executing the following commands.
+
+```bash
+python train.py --data-path "mp-3dmesh.npz" \
+  --target-path "id_prop_e_form.csv" \
+  --task "regression" \
+  --epochs 200 \
+  --batch-size 128 \
+  --amp "True"
+```
+
+**Arguments:**
+
+| Argument      | Required | Default      | Description                                               |
+|---------------|----------|--------------|-----------------------------------------------------------|
+| --data-path   | Yes      |              | Path of 3D mesh dataset                                   |
+| --target-path | Yes      |              | Path of target variables                                  |
+| --task        | No       | "regression" | Task name ("regression" or "classification")              |
+| --es-patience | No       | 50           | Number of patience epochs for EarlyStoppings              |
+| --save-dir    | No       | "./saved"    | Save directory path                                       |
+| --epochs      | No       | 20           | Number of epochs                                          |
+| --batch-size  | No       | 128          | Size of mini-batch                                        |
+| --amp         | No       | False        | Use Automatic Mixed Precision to save memory usage        |
+| --run-id      | No       |              | Run ID used for the directory name for saving the results |
+| --model-path  | No       |              | Model path used for retraining                            |
+
 ## Citation
 
+If you use AVIDa-hIL6 in your research, please use the following citation:
+
+```
 TBD
+```
