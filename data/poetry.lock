@@ -184,19 +184,6 @@ optional = false
 python-versions = ">=3.7"
 
 [[package]]
-name = "matbench"
-version = "0.5"
-description = "a machine learning benchmark for materials science"
-category = "main"
-optional = false
-python-versions = "*"
-
-[package.dependencies]
-matminer = "0.7.4"
-monty = "2021.8.17"
-scikit-learn = "1.0"
-
-[[package]]
 name = "matminer"
 version = "0.7.4"
 description = "matminer is a library that contains tools for data mining in Materials Science"
