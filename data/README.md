@@ -24,7 +24,8 @@ The resulting tetrahedral mesh was filled with tetrahedra without gaps inside th
 ### Use 2018.10.18 version of the Materials Project dataset
 
 In the DeepCrysTet's paper, we used the [2018.10.18 version](https://figshare.com/articles/dataset/Materials_Project_Data/7227749) of the Materials Project dataset.
-Execute the following commands to create the dataset.
+The created dataset is available [here](https://figshare.com/articles/dataset/3D_Mesh_Dataset_for_DeepCrysTet/22031969).  
+If you want to create the same dataset manually, please execute the following commands.
 
 ```
 python delaunay_3d_mesh.py --save-dir="./datasets" --dataset-name="mp_all_20181018"
@@ -39,12 +40,11 @@ Output files:
 Specify the directory where you put your own cif files as `data-dir` and execute the following command.
 
 ```
-python delaunay_3d_mesh_data.py --save-dir="./datasets" --data-dir="./example"
+python delaunay_3d_mesh.py --save-dir="./datasets" --data-dir="./example"
 ```
 
 Output files:
 - delaunay_3d_mesh.npz
-- id_prop_<target_property>.csv
 
 ## Step 2. Feature Generation for input to DeepCrysTet
 
