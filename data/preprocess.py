@@ -44,7 +44,7 @@ def main(args):
         data_dict[mpid] = data.astype(np.float16)
 
     print("Number of mpid after preprocessing: {}".format(len(data_dict)))
-    np.savez_compressed(os.path.join(args.save_dir, "training-data.npz"), **data_dict)
+    np.savez_compressed(os.path.join(args.save_dir, "mp-3dmesh.npz"), **data_dict)
 
 
 if __name__ == "__main__":

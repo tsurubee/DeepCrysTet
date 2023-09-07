@@ -1,11 +1,13 @@
 import argparse
-import data
 from concurrent.futures import ProcessPoolExecutor
 from tqdm import tqdm
 import numpy as np
 import pandas as pd
 import os
 from pymatgen.io.cif import CifParser
+from structure import Structure
+from feature import Features
+from dataset import Dataset
 
 
 def process_cif_file(data_dir, file):
@@ -17,7 +19,7 @@ def process_cif_file(data_dir, file):
 def prepare_delaunay_data(idxlist, df_data, n_workers=None):
     IS_PRIMITIVE = False
     SCALE = 1
-    structureFunc = data.Structure()
+    structureFunc = Structure()
     delaunay_alldata = {}
     with ProcessPoolExecutor(max_workers=n_workers) as executor:
         futures = [
@@ -36,7 +38,7 @@ def prepare_delaunay_data(idxlist, df_data, n_workers=None):
 
 
 def prepare_feature_vectors(delaunay_alldata, subdir_path, n_workers=None):
-    featureFunc = data.Features()
+    featureFunc = Features()
     mesh_path = os.path.join(subdir_path, "delaunay_3d_mesh.npz")
     mesh_alldata = {}
     with ProcessPoolExecutor(max_workers=n_workers) as executor:
@@ -80,7 +82,9 @@ def get_cs_info(dataset, df_data, n_workers=None):
 def main(args):
     if args.data_dir != "":
         # Convert original cif files to structure objects
-        subdir_path = args.data_dir
+        subdir_path = args.save_dir
+        if not os.path.exists(subdir_path):
+            os.makedirs(subdir_path)
         cif_files = [f for f in os.listdir(args.data_dir) if f.endswith(".cif")]
         data_tmp = []
         print("Converting cif files to Structure objects")
@@ -90,20 +94,23 @@ def main(args):
         df_data = pd.DataFrame(data_tmp).set_index("id")
 
     else:
-        dataset = data.Dataset(dataset_name="mp_all_20181018", save_dir=args.save_dir)
+        dataset = Dataset(dataset_name="mp_all_20181018", save_dir=args.save_dir)
         df_data = dataset.get_alldata()
         if args.dataset_name == "test":
             df_data = df_data.iloc[:10, :]
 
         subdir_path = os.path.join(args.save_dir, "mp_all_20181018")
-
         if not os.path.exists(subdir_path):
             os.makedirs(subdir_path)
 
         # Add crystal system and space group to the dataset
         cs_info = get_cs_info(dataset, df_data, n_workers=None)
         df_data = pd.concat(
-            [df_data.reset_index(drop=True), pd.DataFrame(cs_info).reset_index(drop=True)], axis=1
+            [
+                df_data.reset_index(drop=True),
+                pd.DataFrame(cs_info).reset_index(drop=True),
+            ],
+            axis=1,
         )
 
         print("Creating id_prop.csv")
@@ -135,7 +142,9 @@ if __name__ == "__main__":
         type=str,
         help="Directory path where the original cif files are located",
     )
-    parser.add_argument("--dataset-name", default="mp_all_20181018", type=str, help="Dataset Name")
+    parser.add_argument(
+        "--dataset-name", default="mp_all_20181018", type=str, help="Dataset Name"
+    )
 
     args = parser.parse_args()
     main(args)

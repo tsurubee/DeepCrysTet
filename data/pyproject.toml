@@ -1,5 +1,5 @@
 [tool.poetry]
-name = "MI_data"
+name = "deepcrystet_data"
 version = "0.1.0"
 description = ""
 authors = ["Masaya Kumagai"]

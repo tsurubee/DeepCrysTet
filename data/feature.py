@@ -1,6 +1,6 @@
 import pymatgen.core as mg
 import numpy as np
-from .atom_init import Atom_init
+from atom_init import Atom_init
 from bokeh.sampledata.periodic_table import elements
 
 
