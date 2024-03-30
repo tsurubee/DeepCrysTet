@@ -71,8 +71,13 @@ python train.py --data-path "mp-3dmesh.npz" \
 
 ## Citation
 
-If you use AVIDa-hIL6 in your research, please use the following citation:
+If you use DeepCrysTet in your research, please use the following citation:
 
 ```
-TBD
+@inproceedings{tsuruta2023deepcrystet,
+  title={{D}eep{C}rys{T}et: A Deep Learning Approach Using Tetrahedral Mesh for Predicting Properties of Crystalline Materials},
+  author={Hirofumi Tsuruta and Yukari Katsura and Masaya Kumagai},
+  booktitle={2023 International Conference on Machine Learning and Applications (ICMLA)},
+  year={2023},
+}
 ```
